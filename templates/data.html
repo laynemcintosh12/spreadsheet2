@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Data for {{ sheet }}</h1>
+
+    {% if sheet == 'Projects' %}
+        <!-- Button to open Google Form -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnQDw4x0QGmuqII_tCxp0TFwijMU0lwE_Owx4sZ2gKo0wkQA/viewform?usp=sf_link" target="_blank" class="button">Add New Project</a>
+    {% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if values %}
+                {% for row in values %}
+                    <tr>
+                        {% for cell in row %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                        {% if row|length < headers|length %}
+                            {% for _ in range(headers|length - row|length) %}
+                                <td></td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="{{ headers|length }}">No data available</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

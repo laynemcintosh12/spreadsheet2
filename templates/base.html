@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salesman Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Basic styling for the navbar */
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        /* Basic styling for the content */
+        .content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            {% for sheet_name in sheets %}
+                <li><a href="{{ url_for('data', sheet=sheet_name) }}">{{ sheet_name }}</a></li>
+            {% endfor %}
+            {% if 'logged_in' in session %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="content">
+        {% block content %}
+        <!-- Content will be inserted here -->
+        {% endblock %}
+    </div>
+</body>
+</html>
