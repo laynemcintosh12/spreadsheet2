@@ -11,7 +11,7 @@ app.secret_key = config.SECRET_KEY
 
 # Google Sheets setup
 # Decode the Base64 encoded JSON string from environment variable
-service_account_json = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON')
+service_account_json = config.SERVICE_ACCOUNT_JSON
 if service_account_json:
     service_account_json = base64.b64decode(service_account_json).decode('utf-8')
     credentials_info = json.loads(service_account_json)
@@ -63,11 +63,22 @@ def data(sheet):
             return any(cell and cell not in {'0', '$0.00', ''} for cell in row)
 
         filtered_data_rows = [row for row in data_rows if is_relevant(row)]
+
+        # Get the search query from the request
+        search_query = request.args.get('search', '').lower()
+
+        # Filter the data rows based on the search query
+        if search_query:
+            filtered_data_rows = [
+                row for row in filtered_data_rows
+                if any(search_query in str(cell).lower() for cell in row)
+            ]
     else:
         headers = []
         filtered_data_rows = []
 
     return render_template('data.html', headers=headers, values=filtered_data_rows, sheet=sheet)
+
 
 @app.route('/logout')
 def logout():

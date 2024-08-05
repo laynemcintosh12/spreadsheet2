@@ -4,28 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salesman Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        /* Basic styling for the navbar */
+        /* Navbar styling */
         nav {
-            background-color: #333;
-            padding: 10px;
+            background-color: #007BFF; /* Blue background color */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; /* Ensures the navbar spans the full width */
+            box-sizing: border-box; /* Includes padding and border in the element's total width and height */
         }
         nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-wrap: nowrap; /* Prevents wrapping of items */
+            overflow-x: auto; /* Allows horizontal scrolling if needed */
         }
         nav ul li {
-            display: inline;
-            margin-right: 10px;
+            margin: 0 6vw; /* Spacing between links */
         }
         nav ul li a {
             color: white;
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
         nav ul li a:hover {
+            color: #f0f0f0; /* Lighter color on hover */
             text-decoration: underline;
+        }
+        .btn-add-project {
+            background-color: #28a745; /* Green button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn-add-project:hover {
+            background-color: #218838; /* Darker green on hover */
         }
         /* Basic styling for the content */
         .content {
@@ -44,6 +68,7 @@
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% endif %}
         </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnQDw4x0QGmuqII_tCxp0TFwijMU0lwE_Owx4sZ2gKo0wkQA/viewform?usp=sf_link" class="btn-add-project">Add New Project</a>
     </nav>
 
     <!-- Main content -->

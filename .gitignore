@@ -1,2 +1,3 @@
 venv/
 service-account-credentials.json
+secret.txt
