@@ -70,7 +70,7 @@ nav ul {
     overflow-x: auto; /* Allows horizontal scrolling if needed */
 }
 nav ul li {
-    margin: 0 6vw; /* Spacing between links */
+    margin: 0 4vw; /* Spacing between links */
 }
 nav ul li a {
     color: white;
