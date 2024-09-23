@@ -29,9 +29,9 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # Sheets and their ranges
 SHEETS = {
-    'Projects': os.environ.get('PROJECTS_SHEET_RANGE', 'Projects!A2:X2000'),
+    'Projects': os.environ.get('PROJECTS_SHEET_RANGE', 'Projects!A2:W2000'),
     'Balance Sheet': os.environ.get('BALANCE_SHEET_SHEET_RANGE', "'Balance Sheet'!A2:E50"),
     'YTD Tracker': os.environ.get('YTD_TRACKER_SHEET_RANGE', "Salesman!A2:F27"),
-    'Finalized': os.environ.get('FINALIZED_SHEET_RANGE', "Finalized!A2:X2000"),
+    'Finalized': os.environ.get('FINALIZED_SHEET_RANGE', "Finalized!A2:W2000"),
     'Supplements': os.environ.get('SUPPLEMENTS_SHEET_RANGE', "'Supplement Dashboard'!A2:P2000"),
 }
